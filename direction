@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+int direction(int d,int di1,int t1,int di2,int t2)
+{
+	int speed1,speed2;
+	if(d==0)
+	{
+	 speed1=di1/t1;
+	speed2=di2/t2;
+	return speed1+speed2;
+	
+	}
+	else
+	{
+		speed1=di1/t1;
+	speed2=di2/t2;
+	return speed1-speed2;
+		
+	}
+}
+
+int main()
+{
+	int d,di1,di2,t1,t2;
+	cin>>d>>di1>>di2>>t1>>t2;
+	
+	cout<<direction(d,di1, di2,t1, t2)<<" ";
+}
+
