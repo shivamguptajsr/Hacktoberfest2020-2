@@ -1,0 +1,119 @@
+#include<iostream>
+using namespace std;
+int queue[100];
+int size=0;
+int nextindex=0;
+int firstindex=-1;
+int capacity;
+
+//enqueue 
+void enqueueend(int element)
+{
+    if(nextindex==capacity)
+    {
+        cout<<"queue is full"<<endl;
+        return ;
+    }
+    queue[nextindex++]=element;
+    size++;
+    if(firstindex==-1)
+    firstindex=0;
+}
+
+
+
+void enqueuestart(int element)
+{
+    if(firstindex==0)
+    {
+        cout<<"can not insert from start"<<endl;
+        return ;
+    }
+    else if(firstindex==-1)
+    {
+        firstindex=capacity-1;
+        queue[firstindex--]=element;
+        size++;
+    }
+    else
+    {
+        queue[--firstindex]=element;
+        size++;
+    }
+}
+int dequeuestart()
+{
+    if(nextindex==0||nextindex<firstindex)
+    {
+        cout<<"queue is empty"<<endl;
+        return 0;
+    }
+    else if(nextindex>firstindex)
+    {
+        size--;
+        return queue[--nextindex];
+    }
+    else if(nextindex==firstindex)
+    {
+        int ans=queue[firstindex];
+        firstindex=-1;
+        nextindex=0;
+        return ans;
+    }
+
+    
+}
+
+//dequeue
+int dequeueend()
+{
+     if(nextindex==capacity||nextindex<firstindex)
+     {
+         cout<<"queue is empty"<<endl;
+         firstindex=-1;
+         nextindex=0;
+         return 0;
+     }
+     int ans= queue[firstindex++];
+         size--;
+     return ans;
+}
+int size1()
+{
+return size;
+}
+
+
+int first()
+{
+return queue[firstindex];
+}
+
+int last()
+{
+    return queue[nextindex-1];
+}
+
+int main()
+{
+    
+    cout<<"Enter the capacity of the queue :"<<endl;
+    cin>>capacity;
+    enqueueend(11);
+    enqueueend(12);
+    enqueueend(13);
+    enqueueend(14);
+    enqueueend(15);
+    cout<<dequeueend()<<endl;
+    cout<<dequeueend()<<endl;
+    enqueuestart(20);
+    enqueuestart(10);
+    cout<<dequeuestart()<<endl;
+    cout<<dequeuestart()<<endl;
+    cout<<size1()<<endl;
+    cout<<first()<<endl;
+    cout<<last()<<endl;
+    return 0;
+}
+
+
