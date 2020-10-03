@@ -4,6 +4,7 @@ int main()
 {
   int a=10;
   int b=20;
-  cout<<a+b<<endl;
+  int c=30;
+  cout<<"sum of 3 numbers: "<<a+b+c<<endl;
   return 0;
 }
